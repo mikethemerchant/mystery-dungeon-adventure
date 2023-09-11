@@ -1,4 +1,4 @@
-import './App.css';
+/* import './App.css'; */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'reactstrap';
 import { useState, useEffect } from 'react';
@@ -9,7 +9,7 @@ import data from './data/monsters.json';
 import misses from './data/miss.json';
 import hits from './data/hit.json';
 
-function App() {
+function Dungeon() {
   const [arrayIndex, setArrayIndex] = useState(0);
   const [character, setCharacter] = useState(JSON.parse(window.localStorage.getItem('character')) || {name: 'enter name', hitpoints: 30, attack: 5, defence: 15, damage: 4})
   const [monster, setMonster] = useState(data[arrayIndex])
@@ -104,4 +104,4 @@ function App() {
   );
 }
 
-export default App;
+export default Dungeon;

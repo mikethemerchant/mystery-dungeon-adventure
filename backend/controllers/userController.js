@@ -68,17 +68,7 @@ const logoutUser = asyncHandler(async (req, res) => {
     res.status(200).json({ message: 'User logged out' });
 });
 
-// @desc Get user profile
-// route GET /api/users/profile
-// @access Private
-const getUserProfile = asyncHandler(async (req, res) => {
-    const user = {
-        _id: req.user._id,
-        name: req.user.name,
-        email: req.user.email
-    };
-    res.status(200).json(user);
-});
+
 
 // @desc Update user profile
 // route PUT /api/users/profile
@@ -107,9 +97,34 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc Get user profile
+// route GET /api/users/profile
+// @access Private
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = {
+      _id: req.user._id,
+      name: req.user.name,
+      email: req.user.email
+  };
+  res.status(200).json(user);
+});
+
+// @desc Get user dungeon
+// route GET /api/users/dungeon
+// @access Private
+const getUserDungeon = asyncHandler(async (req, res) => {
+  const user = {
+    _id: req.user._id,
+    name: req.user.name,
+    email: req.user.email
+  };
+  res.status(200).json(user);
+});
+
 export { authUser, 
     registerUser, 
     logoutUser, 
+    updateUserProfile,
     getUserProfile, 
-    updateUserProfile 
+    getUserDungeon
 };
