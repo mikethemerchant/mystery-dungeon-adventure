@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'reactstrap';
 import { useState, useEffect } from 'react';
 
-import Image from './components/Image.js'
-import Description from './components/Description';
+import Image from './Image'
+import Description from './Description';
 import data from './data/monsters.json';
 import misses from './data/miss.json';
 import hits from './data/hit.json';

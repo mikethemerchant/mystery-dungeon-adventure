@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import data from '../data/monsters.json';
-import '../App.css';
+import data from './data/monsters.json';
+//import '../App.css';
 // q: how do I navigate up a directory?
-
-
 
 function Image ({arrayIndex}) {
 

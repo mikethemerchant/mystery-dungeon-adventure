@@ -1,0 +1,68 @@
+[
+    {
+        "id": 0,
+        "name": "start",
+        "description": "start of the game",
+        "level": 1,
+        "experience": 1,
+        "attack": 1,
+        "defence": 1,
+        "damage_dice": "1d20",
+        "hitpoints": 1,
+        "image": "enterDungeon.png"
+    },
+    { 
+        "id":1,    
+        "name": "EntranceHall",    
+        "description": "You stand in a dimly lit room with a musty smell. The walls are made of rough-hewn stone and there are several torches mounted on them, casting flickering shadows across the room. In front of you is a large iron door with intricate carvings on it."
+        ,"image": "EntranceHall.png"  
+    },  
+    { 
+        "id":2,    
+        "name": "Armory",    
+        "description": "The room is filled with racks of weapons and armor. Swords, axes, spears, and shields hang from the walls, while suits of plate mail and chainmail sit on display stands. The air is heavy with the scent of metal and oil."
+        ,"image": "Armory.png"  
+    }, 
+    {
+        "id":3,    
+        "name": "DiningHall",    
+        "description": "Long wooden tables and benches fill this room. There are empty plates and cups scattered about, along with a few dirty dishes. A large hearth sits in one corner, still smoldering from a recent fire. The room is quiet except for the occasional sound of dripping water."
+        ,"image": "DiningHall.png"  
+    },  
+    { 
+        "id":4,    
+        "name": "Library",    
+        "description": "Rows of bookshelves line the walls of this room, filled with ancient tomes and dusty scrolls. The air is thick with the smell of parchment and ink. In the center of the room is a large wooden table with several books open on it."
+        ,"image": "Library.png"  
+    },  
+    { 
+        "id":5,    
+        "name": "TreasureRoom",    
+        "description": "This room is filled with treasure! Gold coins and gemstones sparkle in piles on the floor, while silver and gold bars sit on display shelves. The air is filled with the faint scent of perfume, likely from the expensive objects stored here."
+        ,"image": "TreasureRoom.png"  
+    },  
+    { 
+        "id":6,    
+        "name": "Laboratory",    
+        "description": "A variety of vials, tubes, and flasks fill this room. There are tables covered with strange equipment and a variety of chemicals. The air is heavy with the smell of chemicals and magic."
+        ,"image": "Laboratory.png"  
+    },  
+    { 
+        "id":7,    
+        "name": "Crypt",    
+        "description": "You enter a dark room with stone sarcophagi lining the walls. Cobwebs cover everything, and the air is filled with the musty smell of death. Shadows dance on the walls as you move further into the room."
+        ,"image": "Crypt.png"  
+    },  
+    { 
+        "id":8,    
+        "name": "ThroneRoom",    
+        "description": "You enter a grand room with a high ceiling. At the far end sits a large throne made of stone, with ornate carvings and a red velvet cushion. The walls are lined with tapestries depicting epic battles and heroic deeds."
+        ,"image": "ThroneRoom.png"  
+    },  
+    { 
+        "id":9,    
+        "name": "PuzzleRoom",    
+        "description": "This room contains a series of puzzles and riddles that must be solved to proceed. There are various objects and symbols scattered around the room that may provide clues to solving the puzzles. The air is filled with a sense of anticipation and mystery."
+        ,"image": "PuzzleRoom.png"  
+    }
+]

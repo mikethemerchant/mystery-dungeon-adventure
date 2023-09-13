@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import data from '../data/monsters.json';
+import data from './data/monsters.json';
 
 function Description({arrayIndex}) {
     const [text, setText] = useState('');

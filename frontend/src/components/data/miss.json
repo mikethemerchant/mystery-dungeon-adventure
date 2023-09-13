@@ -1,0 +1,239 @@
+[
+    {
+        "id": 1,
+        "description": "ATTACKER attacks but their aim is off, missing the target by a hair's breadth."
+    },
+    {
+        "id": 2,
+        "description": "ATTACKER miscalculates, swinging wide and missing DEFENDER completely."
+    },
+    {
+        "id": 3,
+        "description": "ATTACKER's attack connects with the ground, throwing dirt and debris in all directions, but missing the intended target."
+    },
+    {
+        "id": 4,
+        "description": "ATTACKER's attack falls short of its mark, leaving them open to a counterattack from DEFENDER"
+    },
+    {
+        "id": 5,
+        "description": "ATTACKER's attack grazes the enemy, but doesn't connect with enough force to deal any real damage."
+    },
+    {
+        "id": 6,
+        "description": "ATTACKER swings wildly, missing DEFENDER and leaving themself momentarily off-balance."
+    },
+    {
+        "id": 7,
+        "description": "ATTACKER attempt to strike DEFENDER, but they easily sidestep the attack, leaving them open to a potential counterattack."
+    },
+    {
+        "id": 8,
+        "description": "ATTACKER's attack glances off the enemy's armor, leaving only a scratch."
+    },
+    {
+        "id": 9,
+        "description": "ATTACKER's attack clangs against DEFENDER armor, but fails to penetrate its defenses."
+    },
+    {
+        "id": 10,
+        "description": "ATTACKER's attack misses its mark, but then manages to regain footing before DEFENDER can take advantage."
+    },
+    {
+        "id": 11,
+        "description": "The enemy ducks beneath ATTACKER's swing and emerges unscathed."
+    },
+    {
+        "id": 12,
+        "description": "ATTACKER misjudge the distance and the attack falls short."
+    },
+    {
+        "id": 13,
+        "description": "The enemy's armor is too thick for ATTACKER's attack to penetrate."
+    },
+    {
+        "id": 14,
+        "description": "ATTACKER aims for the enemy's head but they duck and avoid the attack."
+    },
+    {
+        "id": 15,
+        "description": "ATTACKER's attack hits the enemy with a resounding clang, but does no damage."
+    },
+    {
+        "id": 16,
+        "description": "The enemy anticipates ATTACKER's attack and steps back, easily avoiding it."
+    },
+    {
+        "id": 17,
+        "description": "ATTACKER swings too wildly and lose their's balance, narrowly avoiding a fall."
+    },
+    {
+        "id": 18,
+        "description": "The enemy twists out of the way of ATTACKER's attack, leaving them exposed."
+    },
+    {
+        "id": 19,
+        "description": "ATTACKER's attack slips and the attack goes wide."
+    },
+    {
+        "id": 20,
+        "description": "DEFENDER expertly parries ATTACKER's attack, leaving them open for a counterstrike."
+    },
+    {
+        "id": 21,
+        "description": "ATTACKER's attack bounces harmlessly off the enemy's armor."
+    },
+    {
+        "id": 22,
+        "description": "ATTACKER aim for the enemy's legs but they leap over the attack."
+    },
+    {
+        "id": 23,
+        "description": "The enemy's reflexes are too quick for ATTACKER's attack to land."
+    },
+    {
+        "id": 24,
+        "description": "ATTACKER's attack is absorbed by the enemy's armor, leaving no damage."
+    },
+    {
+        "id": 25,
+        "description": "DEFENDER deflects ATTACKER's attack, leaving them off balance."
+    },
+    {
+        "id": 26,
+        "description": "ATTACKER aims for the enemy's heart but they move aside, easily avoiding the attack."
+    },
+    {
+        "id": 27,
+        "description": "ATTACKER's attack is too slow and DEFENDER easily avoids it."
+    },
+    {
+        "id": 28,
+        "description": "DEFENDER is too nimble for ATTACKER's attack to land."
+    },
+    {
+        "id": 29,
+        "description": "ATTACKER's attack gets caught in a crevice and loses the attack."
+    },
+    {
+        "id": 30,
+        "description": "The enemy blocks ATTACKER's attack with their attack, leaving them stunned."
+    },
+    {
+        "id": 31,
+        "description": "ATTACKER swings too high and the attack misses the enemy's body entirely."
+    },
+    {
+        "id": 32,
+        "description": "The enemy sees ATTACKER's attack coming and steps back, leaving them swinging at air."
+    },
+    {
+        "id": 33,
+        "description": "ATTACKER aim for the enemy's arm but they pull it back, avoiding them attack."
+    },
+    {
+        "id": 34,
+        "description": "ATTACKER's attack bounces off the enemy's armor, leaving only a small scratch."
+    },
+    {
+        "id": 35,
+        "description": "The enemy twists out of the way of ATTACKER's attack, leaving them exposed."
+    },
+    {
+        "id": 36,
+        "description": "ATTACKER swings too late and the enemy easily avoids the attack."
+    },
+    {
+        "id": 37,
+        "description": "The enemy sidesteps ATTACKER's attack and strikes back with their own."
+    },
+    {
+        "id": 38,
+        "description": "ATTACKER's attack hits the enemy's armor with a loud thud, but does no damage."
+    },
+    {
+        "id": 39,
+        "description": "The enemy's armor is too thick for ATTACKER's attack to penetrate."
+    },
+    {
+        "id": 40,
+        "description": "ATTACKER's attack hits the enemy's shield, leaving them momentarily stunned."
+    },
+    {
+        "id": 41,
+        "description": "The enemy anticipates ATTACKER's attack and easily avoids it."
+    },
+    {
+        "id": 42,
+        "description": "ATTACKER's attack falls short, missing the enemy by inches."
+    },
+    {
+        "id": 43,
+        "description": "The enemy's reflexes are too quick for ATTACKER's attack to land."
+    },
+    {
+        "id": 44,
+        "description": "ATTACKER weapon slices through the air, connecting with a satisfying thud and leaving a visible gash on DEFENDER."
+      },
+      {
+        "id": 45,
+        "description": "With a mighty swing, the ATTACKER strikes DEFENDER with unrelenting force, knocking them off balance."
+      },
+      {
+        "id": 46,
+        "description": "ATTACKER unleash a flurry of strikes, each one finding its mark with precision and causing DEFENDER to stagger."
+      },
+      {
+        "id": 47,
+        "description": "ATTACKER attacks lands with a resounding impact, causing DEFENDER to reel back in pain."
+      },
+      {
+        "id": 48,
+        "description": "ATTACKER strikes with lightning speed, piercing through DEFENDER defenses with ease."
+      },
+      {
+        "id": 49,
+        "description": "With a powerful thrust, ATTACKER's attack impales DEFENDER, causing them to cry out in agony."
+      },
+    {
+        "id": 50,
+        "description": "ATTACKER aims for the enemy's vulnerable spot, but they manage to twist away at the last moment, narrowly avoiding the attack."
+    }
+]
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

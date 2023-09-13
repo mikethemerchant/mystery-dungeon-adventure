@@ -33,7 +33,15 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             })
 
         }),
+        userDungeon: builder.mutation({
+            query: (data) => ({
+                url: `${USERS_URL}/dungeon`,
+                method: 'GET',
+                body: data
+            })
+
+        }),
     })
 })
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useUpdateUserMutation } = usersApiSlice;
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useUpdateUserMutation, useUserDungeonMutation } = usersApiSlice;
