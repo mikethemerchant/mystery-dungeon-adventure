@@ -80,19 +80,21 @@ function Dungeon() {
   return (
     <>
       <Image arrayIndex={arrayIndex} />
-      <div className='div-sticky'>
+      <div className='div-sticky basic-borders body-text'>
           <Description arrayIndex={arrayIndex} />
           {fightDescription}
-          <Button color="primary" onClick={onButttonClick}>Next</Button>
-          <Button color="danger" onClick={onAttackClick}>Attack</Button>
           <div>
+            <Button color="primary" onClick={onButttonClick}>Next</Button>
+            <Button color="danger" onClick={onAttackClick}>Attack</Button>
+          </div>
+          <div >
             <input type="text" id="name" value={character.name} onChange={nameChange} />
             <input type="text" id="hitpoints" value={character.hitpoints} onChange={hitpointsChange} />
             <input type="text" id="attack" value={character.attack} onChange={attackChange} />
             <input type="text" id="defence" value={character.defence} onChange={defenceChange} />
             <input type="text" id="damage" value={character.damage} onChange={damageChange} />
           </div>
-          <div>
+          <div > 
             <input type="text" id="name" value={monster.name} onChange={nameMonsterChange} />
             <input type="text" id="hitpoints" value={monster.hitpoints} onChange={hitpointsMonsterChange} />
             <input type="text" id="attack" value={monster.attack} onChange={attackMonsterChange} />

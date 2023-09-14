@@ -1,0 +1,37 @@
+.img-float {
+    width: 100%;
+    height:auto;
+    max-width:1024px;
+    float: left;
+  }
+  
+  @media only screen and (max-width: 1300px) {
+    .img-float {
+        float: none;
+        
+    }
+    .div-sticky {
+        position: sticky;
+        right: 0;
+        bottom: 0; 
+    }
+  }
+  
+  .basic-borders {
+    border: 3px solid white;
+    padding: 1px;
+    margin: 1px;
+    background-color: black;
+  }
+
+  .body-background {
+    background-color: black;
+  }
+
+  .body-text {
+    color: white;
+  }
+
+  .hide {
+    display: none;
+  }
