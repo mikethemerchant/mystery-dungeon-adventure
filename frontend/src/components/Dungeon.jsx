@@ -8,6 +8,7 @@ import Description from './Description';
 import data from './data/monsters.json';
 import misses from './data/miss.json';
 import hits from './data/hit.json';
+import { set } from 'mongoose';
 
 function Dungeon() {
   const [arrayIndex, setArrayIndex] = useState(0);
@@ -26,22 +27,40 @@ function Dungeon() {
   const damageChange = event => setCharacter({name: character.name, hitpoints: character.defence, attack: character.attack, defence: character.defence, damage: event.target.value} )
 
   function onButttonClick() {
-    const indexMax = data.length - 1;
-    let randomInt = Math.floor((Math.random() * indexMax))+1;
-    setArrayIndex(randomInt);
-    setMonster(data[randomInt]);
+    if(character.hitpoints > 0) {
+      const indexMax = data.length - 1;
+      let randomInt = Math.floor((Math.random() * indexMax))+1;
+      setArrayIndex(randomInt);
+      setMonster(data[randomInt]);
+      setFightDescription('');
+    } else {
+      setArrayIndex(0);
+      setMonster(data[0]);
+      setFightDescription('');
+      setCharacter({name: 'enter name', hitpoints: 30, attack: 5, defence: 15, damage: 4})
+    }
+
+
   }
 
   function onAttackClick() {
     let result = ""; 
-    if (character.hitpoints >= 0 && monster.hitpoints >= 0) {
+    if (arrayIndex === 0) {
+      result += "You are not fighting anyone.";
+    } else {
+      if (character.hitpoints > 0 && monster.hitpoints > 0) {
         result += " " + fight(character, monster);
-    }
-    if (character.hitpoints >= 0 && monster.hitpoints >= 0) {
-      result += " " + fight(monster, character);
-    }
-    if (result === "") {
-      result += "..nothing happens..";
+      }
+      if (character.hitpoints > 0 && monster.hitpoints > 0) {
+        result += " " + fight(monster, character);
+      }
+      if(character.hitpoints <= 0 || monster.hitpoints <= 0) {
+        if(character.hitpoints < monster.hitpoints) {
+          result += " " + character.name + " is dead.";
+        } else {
+          result += " " + monster.name + " is dead.";
+        }
+      }
     }
     setFightDescription(result);
   }
