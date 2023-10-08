@@ -15,7 +15,11 @@ const userSchema = mongoose.Schema({
         type:String,
         required: true,
         unique: true
-    }
+    },
+    level: {
+        type: Number,
+        required: true
+    },
 }, {
     timestamps: true
 });

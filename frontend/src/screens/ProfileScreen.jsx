@@ -13,6 +13,7 @@ const ProfileScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [level, setLevel] = useState('');
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const ProfileScreen = () => {
     useEffect( () => {
         setName(userInfo?.name);
         setEmail(userInfo?.email);
-    }, [userInfo.setName,userInfo.setEmail]);
+        setLevel(userInfo?.level);
+    }, []);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -36,7 +38,8 @@ const ProfileScreen = () => {
                 id: userInfo._id,
                 name,
                 email,
-                password
+                password,
+                level
                }).unwrap();
               dispatch(setCredentials({...res}));
               toast.success('Profile Updated');
@@ -84,6 +87,15 @@ const ProfileScreen = () => {
                         placeholder='Confirm Password'
                         value={confirmPassword}
                         onChange={ (e) => setConfirmPassword(e.target.value) }> 
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group className='my-2' controlId='level'>
+                    <Form.Label>Level</Form.Label>
+                    <Form.Control
+                        type='level'
+                        placeholder='Level'
+                        value={level}
+                        onChange={ (e) => setLevel(e.target.value) }> 
                     </Form.Control>
                 </Form.Group>
 

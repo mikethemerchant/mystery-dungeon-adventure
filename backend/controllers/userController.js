@@ -15,7 +15,8 @@ const authUser = asyncHandler(async (req, res) => {
       res.status(201).json({
         _id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        level: user.level
       });
     } else {
       res.status(401);
@@ -40,6 +41,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name,
       email,
       password,
+      level: 0
     });
   
     if (user) {
@@ -49,6 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        level: user.level
       });
     } else {
       res.status(400);
@@ -79,6 +82,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     if (user) {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
+        user.level = req.body.level || user.level;
 
         if (req.body.password) {
             user.password = req.body.password;
@@ -89,7 +93,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         res.status(200).json({
             _id: updatedUser._id,
             name: updatedUser.name,
-            email: updatedUser.email
+            email: updatedUser.email,
+            level: updatedUser.level
         });
     } else {
         res.status(404);
@@ -104,7 +109,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
   const user = {
       _id: req.user._id,
       name: req.user.name,
-      email: req.user.email
+      email: req.user.email,
+      level: req.user.level
   };
   res.status(200).json(user);
 });
@@ -116,7 +122,8 @@ const getUserDungeon = asyncHandler(async (req, res) => {
   const user = {
     _id: req.user._id,
     name: req.user.name,
-    email: req.user.email
+    email: req.user.email,
+    level: req.user.level
   };
   res.status(200).json(user);
 });
