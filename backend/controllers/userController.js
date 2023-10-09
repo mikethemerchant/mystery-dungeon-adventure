@@ -16,7 +16,20 @@ const authUser = asyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        level: user.level
+        level: user.level,
+        experience: user.experience,
+        hitpoints: user.hitpoints,
+        armor: user.armor,
+        attack: user.attack,
+        fortitude: user.fortitude,
+        reflex: user.reflex,
+        will: user.will,
+        strength: user.strength,
+        dexterity: user.dexterity,
+        constitution: user.constitution,
+        intelligence: user.intelligence,
+        wisdom: user.wisdom,
+        charisma: user.charisma
       });
     } else {
       res.status(401);
@@ -41,7 +54,20 @@ const registerUser = asyncHandler(async (req, res) => {
       name,
       email,
       password,
-      level: 0
+      level: 0,
+      experience: 0,
+      hitpoints: 10,
+      armor: 10,
+      attack: 0,
+      fortitude: 1,
+      reflex: 1,
+      will: 1,
+      strength: 10,
+      dexterity: 10,
+      constitution: 10,
+      intelligence: 10,
+      wisdom: 10,
+      charisma: 10
     });
   
     if (user) {
@@ -51,7 +77,20 @@ const registerUser = asyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        level: user.level
+        level: user.level,
+        experience: user.experience,
+        hitpoints: user.hitpoints,
+        armor: user.armor,
+        attack: user.attack,
+        fortitude: user.fortitude,
+        reflex: user.reflex,
+        will: user.will,
+        strength: user.strength,
+        dexterity: user.dexterity,
+        constitution: user.constitution,
+        intelligence: user.intelligence,
+        wisdom: user.wisdom,
+        charisma: user.charisma
       });
     } else {
       res.status(400);
@@ -83,6 +122,19 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
         user.level = req.body.level || user.level;
+        user.experience = req.body.experience || user.experience;
+        user.hitpoints = req.body.hitpoints || user.hitpoints;
+        user.armor = req.body.armor || user.armor;
+        user.attack = req.body.attack || user.attack;
+        user.fortitude = req.body.fortitude || user.fortitude;
+        user.reflex = req.body.reflex || user.reflex;
+        user.will = req.body.will || user.will;
+        user.strength = req.body.strength || user.strength;
+        user.dexterity = req.body.dexterity || user.dexterity;
+        user.constitution = req.body.constitution || user.constitution;
+        user.intelligence = req.body.intelligence || user.intelligence;
+        user.wisdom = req.body.wisdom || user.wisdom;
+        user.charisma = req.body.charisma || user.charisma;
 
         if (req.body.password) {
             user.password = req.body.password;
@@ -94,7 +146,20 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             _id: updatedUser._id,
             name: updatedUser.name,
             email: updatedUser.email,
-            level: updatedUser.level
+            level: updatedUser.level,
+            experience: updatedUser.experience,
+            hitpoints: updatedUser.hitpoints,
+            armor: updatedUser.armor,
+            attack: updatedUser.attack,
+            fortitude: updatedUser.fortitude,
+            reflex: updatedUser.reflex,
+            will: updatedUser.will,
+            strength: updatedUser.strength,
+            dexterity: updatedUser.dexterity,
+            constitution: updatedUser.constitution,
+            intelligence: updatedUser.intelligence,
+            wisdom: updatedUser.wisdom,
+            charisma: updatedUser.charisma
         });
     } else {
         res.status(404);
@@ -110,7 +175,20 @@ const getUserProfile = asyncHandler(async (req, res) => {
       _id: req.user._id,
       name: req.user.name,
       email: req.user.email,
-      level: req.user.level
+      level: req.user.level,
+      experience: req.user.experience,
+      hitpoints: req.user.hitpoints,
+      armor: req.user.armor,
+      attack: req.user.attack,
+      fortitude: req.user.fortitude,
+      reflex: req.user.reflex,
+      will: req.user.will,
+      strength: req.user.strength,
+      dexterity: req.user.dexterity,
+      constitution: req.user.constitution,
+      intelligence: req.user.intelligence,
+      wisdom: req.user.wisdom,
+      charisma: req.user.charisma
   };
   res.status(200).json(user);
 });
@@ -123,7 +201,20 @@ const getUserDungeon = asyncHandler(async (req, res) => {
     _id: req.user._id,
     name: req.user.name,
     email: req.user.email,
-    level: req.user.level
+    level: req.user.level,
+    experience: req.user.experience,
+    hitpoints: req.user.hitpoints,
+    armor: req.user.armor,
+    attack: req.user.attack,
+    fortitude: req.user.fortitude,
+    reflex: req.user.reflex,
+    will: req.user.will,
+    strength: req.user.strength,
+    dexterity: req.user.dexterity,
+    constitution: req.user.constitution,
+    intelligence: req.user.intelligence,
+    wisdom: req.user.wisdom,
+    charisma: req.user.charisma
   };
   res.status(200).json(user);
 });
