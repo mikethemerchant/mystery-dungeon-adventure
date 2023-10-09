@@ -8,7 +8,6 @@ import Description from './Description';
 import data from './data/monsters.json';
 import misses from './data/miss.json';
 import hits from './data/hit.json';
-import { set } from 'mongoose';
 
 function Dungeon() {
   const [arrayIndex, setArrayIndex] = useState(0);
