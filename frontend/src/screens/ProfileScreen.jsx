@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 import Loader from '../components/Loader'
 import { setCredentials } from '../slices/authSlice'
 import { useUpdateUserMutation } from '../slices/usersApiSlice'
-import e from 'express'
 
 const ProfileScreen = () => {
     const [name, setName] = useState('');
