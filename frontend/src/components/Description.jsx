@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import data from './data/monsters.json';
 import '../App.css';
+import PropTypes from 'prop-types';
 
 function Description({arrayIndex}) {
     const [text, setText] = useState('');
@@ -15,5 +16,9 @@ function Description({arrayIndex}) {
         </div>
     )
 }
+
+Description.propTypes = {
+    arrayIndex: PropTypes.number.isRequired,
+};
 
 export default Description;
