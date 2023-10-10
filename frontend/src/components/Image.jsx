@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import data from './data/monsters.json';
 import '../App.css';
 
+import PropTypes from 'prop-types';
+
 function Image ({arrayIndex}) {
 
     const [imageName, setImageName] = useState(0);
@@ -16,5 +18,10 @@ function Image ({arrayIndex}) {
         </>
     )
 }
+
+Image.propTypes = {
+  arrayIndex: PropTypes.number.isRequired
+};
+
 
 export default Image;

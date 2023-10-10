@@ -36,6 +36,10 @@ const userSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    damage: {
+        type: Number,
+        required: true
+    },
     fortitude: {
         type: Number,
         required: true

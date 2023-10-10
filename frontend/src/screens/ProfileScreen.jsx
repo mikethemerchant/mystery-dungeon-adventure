@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,6 +18,7 @@ const ProfileScreen = () => {
     const [hitpoints, setHitpoints] = useState('');
     const [armor, setArmor] = useState('');
     const [attack, setAttack] = useState('');
+    const [damage, setDamage] = useState('');
     const [fortitude, setFortitude] = useState('');
     const [reflex, setReflex] = useState('');
     const [will, setWill] = useState('');
@@ -28,7 +29,7 @@ const ProfileScreen = () => {
     const [wisdom, setWisdom] = useState('');
     const [charisma, setCharisma] = useState('');
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { userInfo } = useSelector((state) => state.auth);
@@ -43,6 +44,7 @@ const ProfileScreen = () => {
         setHitpoints(userInfo?.hitpoints);
         setArmor(userInfo?.armor);
         setAttack(userInfo?.attack);
+        setDamage(userInfo?.damage);
         setFortitude(userInfo?.fortitude);
         setReflex(userInfo?.reflex);
         setWill(userInfo?.will);
@@ -52,7 +54,7 @@ const ProfileScreen = () => {
         setIntelligence(userInfo?.intelligence);
         setWisdom(userInfo?.wisdom);
         setCharisma(userInfo?.charisma);
-    }, []);
+    }, [userInfo]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -70,6 +72,7 @@ const ProfileScreen = () => {
                 hitpoints,
                 armor,
                 attack,
+                damage,
                 fortitude,
                 reflex,
                 will,
@@ -171,6 +174,15 @@ const ProfileScreen = () => {
                         placeholder='Attack'
                         value={attack}
                         onChange={ (e) => setAttack(e.target.value) }> 
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group className='my-2' controlId='damage'>
+                    <Form.Label>Damage</Form.Label>
+                    <Form.Control
+                        type='damage'
+                        placeholder='Damage'
+                        value={damage}
+                        onChange={ (e) => setDamage(e.target.value) }> 
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className='my-2' controlId='fortitude'>

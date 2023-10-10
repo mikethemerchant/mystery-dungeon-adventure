@@ -21,6 +21,7 @@ const authUser = asyncHandler(async (req, res) => {
         hitpoints: user.hitpoints,
         armor: user.armor,
         attack: user.attack,
+        damage: user.damage,
         fortitude: user.fortitude,
         reflex: user.reflex,
         will: user.will,
@@ -56,9 +57,10 @@ const registerUser = asyncHandler(async (req, res) => {
       password,
       level: 0,
       experience: 0,
-      hitpoints: 10,
+      hitpoints: 20,
       armor: 10,
       attack: 0,
+      damage: 5,
       fortitude: 1,
       reflex: 1,
       will: 1,
@@ -82,6 +84,7 @@ const registerUser = asyncHandler(async (req, res) => {
         hitpoints: user.hitpoints,
         armor: user.armor,
         attack: user.attack,
+        damage: user.damage,
         fortitude: user.fortitude,
         reflex: user.reflex,
         will: user.will,
@@ -126,6 +129,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         user.hitpoints = req.body.hitpoints || user.hitpoints;
         user.armor = req.body.armor || user.armor;
         user.attack = req.body.attack || user.attack;
+        user.damage = req.body.damage || user.damage;
         user.fortitude = req.body.fortitude || user.fortitude;
         user.reflex = req.body.reflex || user.reflex;
         user.will = req.body.will || user.will;
@@ -151,6 +155,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             hitpoints: updatedUser.hitpoints,
             armor: updatedUser.armor,
             attack: updatedUser.attack,
+            damage: updatedUser.damage,
             fortitude: updatedUser.fortitude,
             reflex: updatedUser.reflex,
             will: updatedUser.will,
@@ -180,6 +185,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       hitpoints: req.user.hitpoints,
       armor: req.user.armor,
       attack: req.user.attack,
+      damage: req.user.damage,
       fortitude: req.user.fortitude,
       reflex: req.user.reflex,
       will: req.user.will,
@@ -206,6 +212,7 @@ const getUserDungeon = asyncHandler(async (req, res) => {
     hitpoints: req.user.hitpoints,
     armor: req.user.armor,
     attack: req.user.attack,
+    damage: req.user.damage,
     fortitude: req.user.fortitude,
     reflex: req.user.reflex,
     will: req.user.will,
