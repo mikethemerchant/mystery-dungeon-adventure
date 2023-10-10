@@ -1,7 +1,7 @@
-/* import './App.css'; */
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'reactstrap';
+import { Form, Button } from 'reactstrap';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify'
 
 import Image from './Image'
 import Description from './Description';
@@ -9,53 +9,74 @@ import data from './data/monsters.json';
 import misses from './data/miss.json';
 import hits from './data/hit.json';
 
+import { setCredentials } from '../slices/authSlice'
+import { useDispatch,useSelector } from 'react-redux'
+import { useUpdateUserMutation } from '../slices/usersApiSlice'
+
 function Dungeon() {
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  const [updateProfile] = useUpdateUserMutation();
+
   const [arrayIndex, setArrayIndex] = useState(0);
-  const [character, setCharacter] = useState(JSON.parse(window.localStorage.getItem('character')) || {name: 'enter name', hitpoints: 30, attack: 5, defence: 15, damage: 4})
   const [monster, setMonster] = useState(data[arrayIndex])
   const [fightDescription, setFightDescription] = useState('')
 
+  const [name, setName] = useState(userInfo?.name);
+  const [hitpoints, setHitpoints] = useState(userInfo?.hitpoints);
+  const [armor, setArmor] = useState(userInfo?.armor);
+  const [attack, setAttack] = useState(userInfo?.attack);
+  const [damage, setDamage] = useState(userInfo?.damage);
+
+
+
   useEffect(() => {
-    window.localStorage.setItem('character', JSON.stringify(character))
-  }, [character])
+    // nothing here anymore
+  }, [])
 
-  const nameChange = event => setCharacter({name: event.target.value, hitpoints: character.hitpoints, attack: character.attack, defence: character.defence, damage: character.damage} )
-  const hitpointsChange = event => setCharacter({name: character.name, hitpoints: event.target.value, attack: character.attack, defence: character.defence, damage: character.damage} )
-  const attackChange = event => setCharacter({name: character.name, hitpoints: character.hitpoints, attack: event.target.value, defence: character.defence, damage: character.damage} )
-  const defenceChange = event => setCharacter({name: character.name, hitpoints: character.defence, attack: character.attack, defence: event.target.value, damage: character.damage} )
-  const damageChange = event => setCharacter({name: character.name, hitpoints: character.defence, attack: character.attack, defence: character.defence, damage: event.target.value} )
+  const nameChange = event => setName(event.target.value)
+  const hitpointsChange = event => setHitpoints(event.target.value)
+  const attackChange = event => setAttack(event.target.value)
+  const armorChange = event => setArmor(event.target.value)
+  const damageChange = event => setDamage(event.target.value)
 
-  function onButttonClick() {
-    if(character.hitpoints > 0) {
+  const nameMonsterChange = event => setMonster({name: event.target.value, hitpoints: monster.hitpoints, attack: monster.attack, defence: monster.defence, damage: monster.damage} )
+  const hitpointsMonsterChange = event => setMonster({name: monster.name, hitpoints: event.target.value, attack: monster.attack, defence: monster.defence, damage: monster.damage} )
+  const attackMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.hitpoints, attack: event.target.value, defence: monster.defence, damage: monster.damage} )
+  const defenceMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.defence, attack: monster.attack, defence: event.target.value, damage: monster.damage} )
+  const damageMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.defence, attack: monster.attack, defence: monster.defence, damage: event.target.value} )
+
+
+  function nextClick() {
+    if(hitpoints > 0) {
       const indexMax = data.length - 1;
       let randomInt = Math.floor((Math.random() * indexMax))+1;
       setArrayIndex(randomInt);
       setMonster(data[randomInt]);
       setFightDescription('');
     } else {
+      // restart
       setArrayIndex(0);
       setMonster(data[0]);
       setFightDescription('');
-      setCharacter({name: 'enter name', hitpoints: 30, attack: 5, defence: 15, damage: 4})
+      setHitpoints(userInfo?.hitpoints);
     }
-
-
   }
 
-  function onAttackClick() {
+  function attackClick() {
     let result = ""; 
     if (arrayIndex === 0) {
       result += "You are not fighting anyone.";
     } else {
-      if (character.hitpoints > 0 && monster.hitpoints > 0) {
-        result += " " + fight(character, monster);
+      if (hitpoints > 0 && monster.hitpoints > 0) {
+        result += " " + UserAttack();
       }
-      if (character.hitpoints > 0 && monster.hitpoints > 0) {
-        result += " " + fight(monster, character);
+      if (hitpoints > 0 && monster.hitpoints > 0) {
+        result += " " + MonsterAttack();
       }
-      if(character.hitpoints <= 0 || monster.hitpoints <= 0) {
-        if(character.hitpoints < monster.hitpoints) {
-          result += " " + character.name + " is dead.";
+      if(hitpoints <= 0 || monster.hitpoints <= 0) {
+        if(hitpoints < monster.hitpoints) {
+          result += " " + name + " is dead.";
         } else {
           result += " " + monster.name + " is dead.";
         }
@@ -63,37 +84,85 @@ function Dungeon() {
     }
     setFightDescription(result);
   }
-                  
-
-  function fight(attacker, defender) {
-    let attackValue = parseInt(attacker.attack) + Math.floor(Math.random() * 20);
-    let attackDamage = parseInt(attacker.damage);
+            
+  function UserAttack() {
+    let attackValue = parseInt(userInfo.attack) + Math.floor(Math.random() * 20);
+    let attackDamage = parseInt(userInfo.damage);
     const missMax = misses.length - 1;
     let missIndex = 1;
     const hitMax = hits.length - 1;
     let hitIndex = 1;
 
     let text = "";
-    
-    if (defender.hitpoints >= 1 && attacker.hitpoints >= 1) {
-      if (attackValue > defender.defence) {  // hit
-        defender.hitpoints -= attackDamage;
-        hitIndex = Math.floor((Math.random() * hitMax))+1;
-        text = hits[hitIndex].description.replace("ATTACKER", attacker.name).replace("DEFENDER", defender.name);
-      } else { // miss
-        missIndex = Math.floor((Math.random() * missMax))+1;
-        text = misses[missIndex].description.replace("ATTACKER", attacker.name).replace("DEFENDER", defender.name);
+
+    if (monster.hitpoints >= 1 && userInfo.hitpoints >= 1) {
+      if (attackValue > monster.defence) {
+        // hit
+        monster.hitpoints -= attackDamage;
+        hitIndex = Math.floor(Math.random() * hitMax) + 1;
+        text = hits[hitIndex].description
+          .replace("ATTACKER", userInfo.name)
+          .replace("DEFENDER", monster.name);
+      } else {
+        // miss
+        missIndex = Math.floor(Math.random() * missMax) + 1;
+        text = misses[missIndex].description
+          .replace("ATTACKER", userInfo.name)
+          .replace("DEFENDER", monster.name);
       }
     }
 
     return text;
   }
 
-  const nameMonsterChange = event => setMonster({name: event.target.value, hitpoints: monster.hitpoints, attack: monster.attack, defence: monster.defence, damage: monster.damage} )
-  const hitpointsMonsterChange = event => setMonster({name: monster.name, hitpoints: event.target.value, attack: monster.attack, defence: monster.defence, damage: monster.damage} )
-  const attackMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.hitpoints, attack: event.target.value, defence: monster.defence, damage: monster.damage} )
-  const defenceMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.defence, attack: monster.attack, defence: event.target.value, damage: monster.damage} )
-  const damageMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.defence, attack: monster.attack, defence: monster.defence, damage: event.target.value} )
+  function MonsterAttack() {
+    let attackValue = parseInt(monster.attack) + Math.floor(Math.random() * 20);
+    let attackDamage = parseInt(monster.damage);
+    const missMax = misses.length - 1;
+    let missIndex = 1;
+    const hitMax = hits.length - 1;
+    let hitIndex = 1;
+
+    let text = "";
+
+    if (monster.hitpoints >= 1 && hitpoints >= 1) {
+      if (attackValue > userInfo.armor) {
+        // hit
+        setHitpoints(hitpoints - attackDamage);
+        hitIndex = Math.floor(Math.random() * hitMax) + 1;
+        text = hits[hitIndex].description
+          .replace("ATTACKER", monster.name)
+          .replace("DEFENDER", name);
+      } else {
+        // miss
+        missIndex = Math.floor(Math.random() * missMax) + 1;
+        text = misses[missIndex].description
+          .replace("ATTACKER", monster.name)
+          .replace("DEFENDER", name);
+      }
+    }
+
+    return text;
+  }
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await updateProfile({ 
+        id: userInfo._id,
+        name,
+        hitpoints,
+        armor,
+        attack,
+        damage
+        }).unwrap();
+      dispatch(setCredentials({...res}));
+      toast.success('Progress saved!');
+    } catch (error) {
+      toast.error(error?.data?.message || error?.error);
+    }
+  }
+
 
   return (
     <>
@@ -102,23 +171,27 @@ function Dungeon() {
           <Description arrayIndex={arrayIndex} />
           {fightDescription}
           <div>
-            <Button color="primary" onClick={onButttonClick}>Next</Button>
-            <Button color="danger" onClick={onAttackClick}>Attack</Button>
+          <Form onSubmit={submitHandler}>
+            <Button type='submit' color="primary" onClick={nextClick}>Next Room</Button>
+          </Form>
           </div>
-          <div >
-            <input type="text" id="name" value={character.name} onChange={nameChange} />
-            <input type="text" id="hitpoints" value={character.hitpoints} onChange={hitpointsChange} />
-            <input type="text" id="attack" value={character.attack} onChange={attackChange} />
-            <input type="text" id="defence" value={character.defence} onChange={defenceChange} />
-            <input type="text" id="damage" value={character.damage} onChange={damageChange} />
-          </div>
-          <div > 
-            <input type="text" id="name" value={monster.name} onChange={nameMonsterChange} />
-            <input type="text" id="hitpoints" value={monster.hitpoints} onChange={hitpointsMonsterChange} />
-            <input type="text" id="attack" value={monster.attack} onChange={attackMonsterChange} />
-            <input type="text" id="defence" value={monster.defence} onChange={defenceMonsterChange} />
-            <input type="text" id="damage" value={monster.damage} onChange={damageMonsterChange} />
-          </div>
+            <div >
+              <input type="text" id="name" value={name} onChange={nameChange} />
+              <input type="text" id="hitpoints" value={hitpoints} onChange={hitpointsChange} />
+              <input type="text" id="attack" value={attack} onChange={attackChange} />
+              <input type="text" id="armor" value={armor} onChange={armorChange} />
+              <input type="text" id="damage" value={damage} onChange={damageChange} />
+            </div>
+            <div > 
+              <input type="text" id="name" value={monster.name} onChange={nameMonsterChange} />
+              <input type="text" id="hitpoints" value={monster.hitpoints} onChange={hitpointsMonsterChange} />
+              <input type="text" id="attack" value={monster.attack} onChange={attackMonsterChange} />
+              <input type="text" id="defence" value={monster.defence} onChange={defenceMonsterChange} />
+              <input type="text" id="damage" value={monster.damage} onChange={damageMonsterChange} />
+            </div>
+            <Button color="danger" onClick={attackClick} >Attack</Button>
+
+          
       </div>
     </>
   );

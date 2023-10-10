@@ -54,7 +54,7 @@ const ProfileScreen = () => {
         setIntelligence(userInfo?.intelligence);
         setWisdom(userInfo?.wisdom);
         setCharisma(userInfo?.charisma);
-    }, []);
+    }, [userInfo]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
