@@ -8,6 +8,7 @@ import Description from './Description';
 import data from './data/monsters.json';
 import misses from './data/miss.json';
 import hits from './data/hit.json';
+import { calculateLevel } from './utils/utils';
 
 import { setCredentials } from '../slices/authSlice'
 import { useDispatch,useSelector } from 'react-redux'
@@ -27,6 +28,8 @@ function Dungeon() {
   const [armor, setArmor] = useState(userInfo?.armor);
   const [attack, setAttack] = useState(userInfo?.attack);
   const [damage, setDamage] = useState(userInfo?.damage);
+  const [level, setLevel] = useState(userInfo?.level);
+  const [experience, setExperience] = useState(userInfo?.experience);
 
 
 
@@ -39,6 +42,8 @@ function Dungeon() {
   const attackChange = event => setAttack(event.target.value)
   const armorChange = event => setArmor(event.target.value)
   const damageChange = event => setDamage(event.target.value)
+  const levelChange = event => setLevel(event.target.value)
+  const experienceChange = event => setExperience(event.target.value)
 
   const nameMonsterChange = event => setMonster({name: event.target.value, hitpoints: monster.hitpoints, attack: monster.attack, defence: monster.defence, damage: monster.damage} )
   const hitpointsMonsterChange = event => setMonster({name: monster.name, hitpoints: event.target.value, attack: monster.attack, defence: monster.defence, damage: monster.damage} )
@@ -70,6 +75,10 @@ function Dungeon() {
     } else {
       if (hitpoints > 0 && monster.hitpoints > 0) {
         result += " " + UserAttack();
+        if (monster.hitpoints <= 0) { // monster is dead
+          setExperience(parseInt(experience) + parseInt(monster.experience));
+          setLevel(calculateLevel(experience));
+        }
       }
       if (hitpoints > 0 && monster.hitpoints > 0) {
         result += " " + MonsterAttack();
@@ -145,6 +154,8 @@ function Dungeon() {
     return text;
   }
 
+
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -154,7 +165,8 @@ function Dungeon() {
         hitpoints,
         armor,
         attack,
-        damage
+        damage,
+        experience
         }).unwrap();
       dispatch(setCredentials({...res}));
       toast.success('Progress saved!');
@@ -162,7 +174,6 @@ function Dungeon() {
       toast.error(error?.data?.message || error?.error);
     }
   }
-
 
   return (
     <>
@@ -181,6 +192,8 @@ function Dungeon() {
               <input type="text" id="attack" value={attack} onChange={attackChange} />
               <input type="text" id="armor" value={armor} onChange={armorChange} />
               <input type="text" id="damage" value={damage} onChange={damageChange} />
+              <input type="text" id="level" value={level} onChange={levelChange} />
+              <input type="text" id="experience" value={experience} onChange={experienceChange} />
             </div>
             <div > 
               <input type="text" id="name" value={monster.name} onChange={nameMonsterChange} />
@@ -190,8 +203,6 @@ function Dungeon() {
               <input type="text" id="damage" value={monster.damage} onChange={damageMonsterChange} />
             </div>
             <Button color="danger" onClick={attackClick} >Attack</Button>
-
-          
       </div>
     </>
   );
