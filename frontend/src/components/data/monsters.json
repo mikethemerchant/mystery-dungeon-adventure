@@ -451,7 +451,7 @@
   },
   {
     "id": "31",
-    "name": "Drow",
+    "name": "DrowPriestess",
     "description": "Drow are a dark-skinned, elven race with white hair and striking, almost inhuman features. They typically stand around 5 to 6 feet tall and possess lithe, graceful bodies. Drow society is highly matriarchal, with powerful priestesses and female warriors known as \"driders\" leading their communities. They have a reputation for being sdispatched in the use of poisons and magic, and their cities are often located deep underground, hidden away from the surface world. Drow are also notorious slavers, often capturing and enslaving other intelligent races. They are fierce opponents, employing advanced tactics and techniques in battle, and are known to be both cunning and ruthless.",
     "experience": "3100",
     "attack": "18--12--18",
@@ -462,7 +462,7 @@
     "saveReflex": "8",
     "saveWill": "5",
     "gold": "765",
-    "image": "Drow.png"
+    "image": "DrowPriestess.png"
   },
   {
     "id": "32",
@@ -672,7 +672,7 @@
     "saveReflex": "9",
     "saveWill": "9",
     "gold": "4725",
-    "image": "YoungAdultWhiteDragon`.png"
+    "image": "YoungAdultWhiteDragon.png"
   },
   {
     "id": "46",
