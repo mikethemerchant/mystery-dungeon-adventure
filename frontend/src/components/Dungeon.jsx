@@ -51,6 +51,7 @@ function Dungeon() {
   const defenceMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.defence, attack: monster.attack, defence: event.target.value, damage: monster.damage} )
   const damageMonsterChange = event => setMonster({name: monster.name, hitpoints: monster.defence, attack: monster.attack, defence: monster.defence, damage: event.target.value} )
 
+  const shouldHide = true;
 
   function nextClick() {
     if(hitpoints > 0) {
@@ -169,7 +170,7 @@ function Dungeon() {
         experience
         }).unwrap();
       dispatch(setCredentials({...res}));
-      toast.success('Progress saved!');
+      //toast.success('Progress saved!');
     } catch (error) {
       toast.error(error?.data?.message || error?.error);
     }
@@ -187,20 +188,20 @@ function Dungeon() {
           </Form>
           </div>
             <div >
-              <input type="text" id="name" value={name} onChange={nameChange} />
-              <input type="text" id="hitpoints" value={hitpoints} onChange={hitpointsChange} />
-              <input type="text" id="attack" value={attack} onChange={attackChange} />
-              <input type="text" id="armor" value={armor} onChange={armorChange} />
-              <input type="text" id="damage" value={damage} onChange={damageChange} />
-              <input type="text" id="level" value={level} onChange={levelChange} />
-              <input type="text" id="experience" value={experience} onChange={experienceChange} />
+              <input type="text" id="name" value={name} onChange={nameChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="hitpoints" value={hitpoints} onChange={hitpointsChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="attack" value={attack} onChange={attackChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="armor" value={armor} onChange={armorChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="damage" value={damage} onChange={damageChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="level" value={level} onChange={levelChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="experience" value={experience} onChange={experienceChange} style={{display: shouldHide ? 'none' : 'block'}} />
             </div>
             <div > 
-              <input type="text" id="name" value={monster.name} onChange={nameMonsterChange} />
-              <input type="text" id="hitpoints" value={monster.hitpoints} onChange={hitpointsMonsterChange} />
-              <input type="text" id="attack" value={monster.attack} onChange={attackMonsterChange} />
-              <input type="text" id="defence" value={monster.defence} onChange={defenceMonsterChange} />
-              <input type="text" id="damage" value={monster.damage} onChange={damageMonsterChange} />
+              <input type="text" id="name" value={monster.name} onChange={nameMonsterChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="hitpoints" value={monster.hitpoints} onChange={hitpointsMonsterChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="attack" value={monster.attack} onChange={attackMonsterChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="defence" value={monster.defence} onChange={defenceMonsterChange} style={{display: shouldHide ? 'none' : 'block'}} />
+              <input type="text" id="damage" value={monster.damage} onChange={damageMonsterChange} style={{display: shouldHide ? 'none' : 'block'}} />
             </div>
             <Button color="danger" onClick={attackClick} >Attack</Button>
       </div>
