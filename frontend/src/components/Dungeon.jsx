@@ -155,8 +155,6 @@ function Dungeon() {
     return text;
   }
 
-
-
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -180,8 +178,8 @@ function Dungeon() {
     <>
       <Image arrayIndex={arrayIndex} />
       <div className='div-sticky basic-borders body-text'>
-          <Description arrayIndex={arrayIndex} />
-          {fightDescription}
+          
+          {fightDescription == '' ? <Description arrayIndex={arrayIndex} />  : fightDescription }      
           <div>
           <Form onSubmit={submitHandler}>
             <Button type='submit' color="primary" onClick={nextClick}>Next Room</Button>
